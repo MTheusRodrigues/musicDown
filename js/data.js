@@ -13,6 +13,12 @@ export default [
         describe: "Vintage Culture & Clubbers",
         
     },
-  
+    {
+        image: "/image/list-main-imgs/0.jpg",
+        audio: "audio/Alok.m4a",
+        title: "Alok & VIZE - Love Again (feat. Alida)",
+        describe: "Alok",
+        
+    },
    
 ]

@@ -6,11 +6,14 @@ import audios from "/js/data.js";
 
 
 //track 01-------------------------------------------------------------------------------------------------------
-  const track1 = document.querySelector("#track1")
+  const track01 = document.querySelector("#track01")
   const audioImage1 = document.querySelector(".main-list li#iten-01");
   const title1 = document.querySelector("#legend-track-1 h3");
   const describe1 = document.querySelector("#legend-track-1 h4");
-  const btnPlayPause = document.querySelector('.iten-play');
+  
+  
+  
+  const btnPlayPause = document.querySelector('.btn-play');
   const btnVolMute = document.querySelector('.iten-vol');
   const seekBarRange = document.querySelector('#seekbarTrack1');
   const seekBarRang = document.querySelector('#seek');
@@ -19,21 +22,23 @@ import audios from "/js/data.js";
   const seekBarV = document.querySelector("#vol");
 
 
-  currentAudio = audioData[0];
+  currentAudio = audioData[2];
   audioImage1.style.background = `url('${currentAudio.image}') no-repeat`;
   title1.innerText = currentAudio.title;
   describe1.innerText = currentAudio.describe;
-  track1.src = currentAudio.audio;
+  track01.src = currentAudio.audio;
 //#FUNÇÕES-----------------------------------------------------------------------------------------------------------------------
       function playTrack1(){
           isPlaying = true;
-          track1.play();
-          btnPlayPause.innerHTML = "&#xf04c";
+          track01.play();
+          btnPlayPause.innerHTML = "<i class='fas fa-pause'></i>";
+         // document.querySelector(".player-bar").style.opacity = 1;
+         // document.querySelector(".player-bar").style.visibility = hidden;
       };
       function pauseTrack1(){
           isPlaying = false;
-          track1.pause();
-          btnPlayPause.innerHTML = "&#xf04b";
+          track01.pause();
+          btnPlayPause.innerHTML = "<i class='fas fa-play'></i>";
       };
       function togglePlayPause() {if (isPlaying) {
             pauseTrack1();
@@ -41,6 +46,8 @@ import audios from "/js/data.js";
             playTrack1();
           }
       };
+    
+    /*
       function toggleMute() {
           track1.muted = !track1.muted;
           if (track1.muted) {
@@ -52,13 +59,27 @@ import audios from "/js/data.js";
       function setVolume() {
           track1.volume = seekbarVolTrack1.value / 100;
       };
-      btnPlayPause.addEventListener("click",togglePlayPause);
-      btnVolMute.addEventListener("click",toggleMute);
-      seekbarVolTrack1.addEventListener("mousemove", setVolume);
-      btnVolMute.onclick = () => track1.volume = seekbarVolTrack1.value / 100;
-      track1.onloadedmetadata = () => seekBarRange.max = track1.duration;
-      seekBarRange.onchange = () => track1.currentTime = seekBarRange.value;
-      track1.ontimeupdate = () => seekBarRange.value = track1.currentTime;
+      */
+     btnPlayPause.addEventListener("click",togglePlayPause);
+   
+    track01.onloadedmetadata = () => seekBarRange.max = track01.duration;
+    seekBarRange.onchange = () => track01.currentTime = seekBarRange.value;
+    track01.ontimeupdate = () => seekBarRange.value = track01.currentTime;
+
+      track01.addEventListener("timeupdate", function(){
+        let position = track01.currentTime / track01.duration
+        let test = position * 100
+        console.log(test)
+      })
+     
+
+     
+    
+
+    
+    /*
+      
+      
       seekBarV.addEventListener("mouseover", function() {
           seekBar.style.left = "90px";seekBar.style.paddingRight = "45px"; 
           seekBar.style.transition = ".7s"; 
@@ -112,6 +133,7 @@ import audios from "/js/data.js";
   //#-------------------------------------------------------------------------------------------------------------
 
 //track 02-------------------------------------------------------------------------------------------------------
-
-
-
+  btnVolMute.onclick = () => track01.volume = seekbarVolTrack1.value / 100;
+btnVolMute.addEventListener("click",toggleMute);
+      seekbarVolTrack1.addEventListener("mousemove", setVolume);
+*/

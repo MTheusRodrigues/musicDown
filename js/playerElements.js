@@ -8,6 +8,7 @@
         this.volume = document.querySelector("#seekbar-vol-1");
         this.seekbar = document.querySelector("#seekBar-1");
     },
+    /*
     setTrack2() {
         this.audioImage = document.querySelector(".main-list li#iten-02");
         this.title = document.querySelector("#legend-track-2 h3");
